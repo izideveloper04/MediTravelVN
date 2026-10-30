@@ -1,0 +1,141 @@
+{
+ "locations": [
+  {
+   "slug": "japan",
+   "name": "Japan",
+   "parent": "",
+   "kind": "country",
+   "keywords": "nippon",
+   "order": 20
+  },
+  {
+   "slug": "tokyo",
+   "name": "Tokyo",
+   "parent": "japan",
+   "kind": "city",
+   "keywords": "",
+   "order": 21
+  },
+  {
+   "slug": "kyoto",
+   "name": "Kyoto",
+   "parent": "japan",
+   "kind": "city",
+   "keywords": "",
+   "order": 22
+  }
+ ],
+ "items": [
+  {
+   "type": "destination",
+   "slug": "japan",
+   "path": "/destinations/japan/",
+   "title": "Japan",
+   "locations": [
+    "japan"
+   ],
+   "fields": {
+    "hero_title": "Japan,",
+    "hero_title_em": "beautifully precise."
+   },
+   "images": {
+    "hero": {
+     "url": "/assets/singapore.webp",
+     "alt": "Japan"
+    }
+   },
+   "seo": {
+    "title": "Japan | Travora",
+    "description": "Japan holidays"
+   },
+   "order": 9
+  },
+  {
+   "type": "destination",
+   "slug": "tokyo",
+   "path": "/destinations/tokyo/",
+   "title": "Tokyo",
+   "locations": [
+    "tokyo"
+   ],
+   "fields": {},
+   "images": {},
+   "seo": {
+    "title": "Tokyo | Travora",
+    "description": ""
+   },
+   "order": 1000
+  },
+  {
+   "type": "tour",
+   "slug": "tokyo-city-break",
+   "path": "/tours/tokyo-city-break/",
+   "title": "Tokyo City Break",
+   "locations": [
+    "tokyo"
+   ],
+   "fields": {
+    "days": 5,
+    "price_inr": 120000,
+    "styles": "city",
+    "badge": "New",
+    "route_line": "Tokyo"
+   },
+   "images": {},
+   "seo": {},
+   "order": 1000
+  },
+  {
+   "type": "post",
+   "slug": "tokyo-in-a-weekend",
+   "path": "/blog/tokyo-in-a-weekend/",
+   "title": "Tokyo in a weekend",
+   "locations": [
+    "tokyo"
+   ],
+   "fields": {
+    "category": "City discoveries",
+    "category_slug": "city-discoveries",
+    "excerpt": "Short.",
+    "date": "2026-10-30",
+    "read_minutes": 1,
+    "body_html": "<h2>One</h2><p>Hello</p>"
+   },
+   "images": {},
+   "seo": {},
+   "order": -1
+  },
+  {
+   "type": "page",
+   "slug": "careers",
+   "path": "/careers/",
+   "title": "Careers",
+   "locations": [],
+   "fields": {
+    "body_html": "<p>Join us.</p>"
+   },
+   "images": {},
+   "seo": {},
+   "order": 0
+  },
+  {
+   "type": "destination",
+   "slug": "kyoto",
+   "path": "/destinations/kyoto/",
+   "title": "Kyoto",
+   "locations": [
+    "kyoto"
+   ],
+   "fields": {},
+   "images": {},
+   "seo": {
+    "title": "Kyoto | Travora",
+    "description": ""
+   },
+   "order": 1000
+  }
+ ],
+ "redirects": {
+  "/destinations/old-london/": "/destinations/london/"
+ }
+}

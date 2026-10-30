@@ -1,0 +1,617 @@
+[
+  {
+    "path": "/",
+    "title": "International destinations & extraordinary holidays",
+    "section": "home"
+  },
+  {
+    "path": "/hotels/",
+    "title": "Hotels — Beautiful places to stay",
+    "section": "hotels"
+  },
+  {
+    "path": "/hotels/results/",
+    "title": "Hotel results — Find your perfect stay",
+    "section": "hotels"
+  },
+  {
+    "path": "/hotels/ubud-garden-retreat/",
+    "title": "Ubud Garden Retreat — Stay concept",
+    "section": "hotels"
+  },
+  {
+    "path": "/hotels/bali-beach-villas/",
+    "title": "Bali Beach Villas — Stay concept",
+    "section": "hotels"
+  },
+  {
+    "path": "/hotels/ubud-jungle-suites/",
+    "title": "Ubud Jungle Suites — Stay concept",
+    "section": "hotels"
+  },
+  {
+    "path": "/hotels/lagoon-island-retreat/",
+    "title": "Lagoon Island Retreat — Stay concept",
+    "section": "hotels"
+  },
+  {
+    "path": "/hotels/downtown-dubai/",
+    "title": "The Downtown Dubai — Stay concept",
+    "section": "hotels"
+  },
+  {
+    "path": "/hotels/london-southbank-house/",
+    "title": "London Southbank House — Stay concept",
+    "section": "hotels"
+  },
+  {
+    "path": "/hotels/edinburgh-old-town-house/",
+    "title": "Edinburgh Old Town House — Stay concept",
+    "section": "hotels"
+  },
+  {
+    "path": "/hotels/singapore-marina-garden/",
+    "title": "Singapore Marina Garden — Stay concept",
+    "section": "hotels"
+  },
+  {
+    "path": "/hotels/singapore-orchard-residence/",
+    "title": "Singapore Orchard Residence — Stay concept",
+    "section": "hotels"
+  },
+  {
+    "path": "/hotels/kuala-lumpur-skyline/",
+    "title": "Kuala Lumpur Skyline House — Stay concept",
+    "section": "hotels"
+  },
+  {
+    "path": "/hotels/langkawi-bay-retreat/",
+    "title": "Langkawi Bay Retreat — Stay concept",
+    "section": "hotels"
+  },
+  {
+    "path": "/hotels/bangkok-riverside-house/",
+    "title": "Bangkok Riverside House — Stay concept",
+    "section": "hotels"
+  },
+  {
+    "path": "/hotels/hanoi-quarter-house/",
+    "title": "Hanoi Quarter House — Stay concept",
+    "section": "hotels"
+  },
+  {
+    "path": "/hotels/da-nang-coast-retreat/",
+    "title": "Da Nang Coast Retreat — Stay concept",
+    "section": "hotels"
+  },
+  {
+    "path": "/hotels/new-york-midtown-house/",
+    "title": "New York Midtown House — Stay concept",
+    "section": "hotels"
+  },
+  {
+    "path": "/hotels/los-angeles-palm-house/",
+    "title": "Los Angeles Palm House — Stay concept",
+    "section": "hotels"
+  },
+  {
+    "path": "/flights/",
+    "title": "Flights — Find your next journey",
+    "section": "flights"
+  },
+  {
+    "path": "/flights/results/",
+    "title": "Flight search results — Compare journey ideas",
+    "section": "flights"
+  },
+  {
+    "path": "/flights/review/",
+    "title": "Review your flight journey",
+    "section": "flights"
+  },
+  {
+    "path": "/flights/london-singapore/",
+    "title": "London to Singapore Flights | Travora",
+    "section": "flights"
+  },
+  {
+    "path": "/flights/london-new-york/",
+    "title": "London to New York Flights | Travora",
+    "section": "flights"
+  },
+  {
+    "path": "/flights/london-dubai/",
+    "title": "London to Dubai Flights | Travora",
+    "section": "flights"
+  },
+  {
+    "path": "/flights/singapore-kuala-lumpur/",
+    "title": "Singapore to Kuala Lumpur Flights | Travora",
+    "section": "flights"
+  },
+  {
+    "path": "/flights/singapore-bangkok/",
+    "title": "Singapore to Bangkok Flights | Travora",
+    "section": "flights"
+  },
+  {
+    "path": "/flights/singapore-hanoi/",
+    "title": "Singapore to Hanoi Flights | Travora",
+    "section": "flights"
+  },
+  {
+    "path": "/flights/singapore-dubai/",
+    "title": "Singapore to Dubai Flights | Travora",
+    "section": "flights"
+  },
+  {
+    "path": "/flights/kuala-lumpur-bangkok/",
+    "title": "Kuala Lumpur to Bangkok Flights | Travora",
+    "section": "flights"
+  },
+  {
+    "path": "/flights/bangkok-ho-chi-minh-city/",
+    "title": "Bangkok to Ho Chi Minh City Flights | Travora",
+    "section": "flights"
+  },
+  {
+    "path": "/flights/dubai-new-york/",
+    "title": "Dubai to New York Flights | Travora",
+    "section": "flights"
+  },
+  {
+    "path": "/flights/abu-dhabi-london/",
+    "title": "Abu Dhabi to London Flights | Travora",
+    "section": "flights"
+  },
+  {
+    "path": "/flights/new-york-singapore/",
+    "title": "New York to Singapore Flights | Travora",
+    "section": "flights"
+  },
+  {
+    "path": "/tours/",
+    "title": "International Holiday Packages & Tours",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/london-city-break/",
+    "title": "London City Break | 4-Day Holiday Idea",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/edinburgh-highlands-escape/",
+    "title": "Edinburgh & Highlands Escape | 6-Day Holiday Idea",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/london-edinburgh-discovery/",
+    "title": "London & Edinburgh Discovery | 8-Day Holiday Idea",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/britain-heritage-journey/",
+    "title": "Britain Heritage Journey | 10-Day Holiday Idea",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/singapore-city-garden-escape/",
+    "title": "Singapore City & Garden Escape | 5-Day Holiday Idea",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/sentosa-family-getaway/",
+    "title": "Sentosa Family Getaway | 4-Day Holiday Idea",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/singapore-weekend-discovery/",
+    "title": "Singapore Weekend Discovery | 3-Day Holiday Idea",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/kuala-lumpur-city-break/",
+    "title": "Kuala Lumpur City Break | 4-Day Holiday Idea",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/langkawi-beach-escape/",
+    "title": "Langkawi Beach Escape | 5-Day Holiday Idea",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/malaysia-city-island-journey/",
+    "title": "Malaysia City & Island Journey | 8-Day Holiday Idea",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/bangkok-culture-city-break/",
+    "title": "Bangkok Culture & City Break | 4-Day Holiday Idea",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/phuket-beach-holiday/",
+    "title": "Phuket Beach Holiday | 5-Day Holiday Idea",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/bangkok-phuket-discovery/",
+    "title": "Bangkok & Phuket Discovery | 8-Day Holiday Idea",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/thailand-island-escape/",
+    "title": "Thailand Island Escape | 6-Day Holiday Idea",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/hanoi-heritage-escape/",
+    "title": "Hanoi Heritage Escape | 4-Day Holiday Idea",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/hoi-an-lantern-escape/",
+    "title": "Hoi An Lantern Escape | 5-Day Holiday Idea",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/vietnam-north-central-journey/",
+    "title": "Vietnam North & Central Journey | 8-Day Holiday Idea",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/vietnam-city-coast-discovery/",
+    "title": "Vietnam City & Coast Discovery | 10-Day Holiday Idea",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/new-york-city-break/",
+    "title": "New York City Break | 5-Day Holiday Idea",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/los-angeles-coastal-escape/",
+    "title": "Los Angeles Coastal Escape | 6-Day Holiday Idea",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/usa-two-coast-discovery/",
+    "title": "United States of America Two-Coast Discovery | 10-Day Holiday Idea",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/california-city-coast/",
+    "title": "California City & Coast Journey | 8-Day Holiday Idea",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/abu-dhabi-cultural-escape/",
+    "title": "Abu Dhabi Cultural Escape | 4-Day Holiday Idea",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/uae-twin-city-journey/",
+    "title": "United Arab Emirates Twin-City Journey | 7-Day Holiday Idea",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/dubai-city-escape/",
+    "title": "Dubai City & Desert Escape | 5-Day Holiday Idea",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/bali-island-escape/",
+    "title": "Bali Island Escape | 6-Day Holiday Idea",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/maldives-island-escape/",
+    "title": "Maldives Island Escape | 5-Day Holiday Idea",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/london-bath-heritage/",
+    "title": "London & Bath Heritage Journey | 6-Day Holiday Package",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/penang-food-culture/",
+    "title": "Penang Food & Culture Escape | 5-Day Holiday Package",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/chiang-mai-cultural-escape/",
+    "title": "Chiang Mai Cultural Escape | 5-Day Holiday Package",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/vietnam-south-coast/",
+    "title": "Vietnam South & Coast Discovery | 8-Day Holiday Package",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/san-francisco-coast-escape/",
+    "title": "San Francisco & California Coast | 7-Day Holiday Package",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/las-vegas-desert-escape/",
+    "title": "Los Angeles & Las Vegas Escape | 6-Day Holiday Package",
+    "section": "tours"
+  },
+  {
+    "path": "/tours/singapore-neighbourhood-discovery/",
+    "title": "Singapore Neighbourhood Discovery | 5-Day Holiday Package",
+    "section": "tours"
+  },
+  {
+    "path": "/destinations/",
+    "title": "International Destinations — Countries, Places & Holidays",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/uk/",
+    "title": "United Kingdom Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/singapore/",
+    "title": "Singapore Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/malaysia/",
+    "title": "Malaysia Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/thailand/",
+    "title": "Thailand Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/vietnam/",
+    "title": "Vietnam Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/usa/",
+    "title": "United States of America Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/uae/",
+    "title": "United Arab Emirates Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/indonesia/",
+    "title": "Indonesia Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/maldives/",
+    "title": "Maldives Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/london/",
+    "title": "London Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/edinburgh/",
+    "title": "Edinburgh Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/bath/",
+    "title": "Bath Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/marina-bay/",
+    "title": "Marina Bay Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/sentosa/",
+    "title": "Sentosa Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/orchard-road/",
+    "title": "Orchard Road Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/chinatown/",
+    "title": "Chinatown Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/kuala-lumpur/",
+    "title": "Kuala Lumpur Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/penang/",
+    "title": "Penang Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/langkawi/",
+    "title": "Langkawi Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/bangkok/",
+    "title": "Bangkok Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/chiang-mai/",
+    "title": "Chiang Mai Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/phuket/",
+    "title": "Phuket Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/hanoi/",
+    "title": "Hanoi Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/hoi-an/",
+    "title": "Hoi An Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/da-nang/",
+    "title": "Da Nang Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/ho-chi-minh-city/",
+    "title": "Ho Chi Minh City Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/new-york/",
+    "title": "New York Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/los-angeles/",
+    "title": "Los Angeles Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/san-francisco/",
+    "title": "San Francisco Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/las-vegas/",
+    "title": "Las Vegas Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/dubai/",
+    "title": "Dubai Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/abu-dhabi/",
+    "title": "Abu Dhabi Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/destinations/bali/",
+    "title": "Bali Holidays, Places & Packages | Travora",
+    "section": "destinations"
+  },
+  {
+    "path": "/transportation/",
+    "title": "Transportation, airport transfers & private rides",
+    "section": "transportation"
+  },
+  {
+    "path": "/transportation/results/",
+    "title": "Compare your ride options",
+    "section": "transportation"
+  },
+  {
+    "path": "/transportation/private-sedan/",
+    "title": "Private sedan — transportation",
+    "section": "transportation"
+  },
+  {
+    "path": "/transportation/premium-suv/",
+    "title": "Premium SUV — transportation",
+    "section": "transportation"
+  },
+  {
+    "path": "/transportation/group-van/",
+    "title": "Group van — transportation",
+    "section": "transportation"
+  },
+  {
+    "path": "/blog/",
+    "title": "The Travora Journal | Travel Ideas & Destination Stories",
+    "section": "blog"
+  },
+  {
+    "path": "/blog/singapore-neighbourhoods-at-your-pace/",
+    "title": "Singapore, one neighbourhood at a time | Travora Journal",
+    "section": "blog"
+  },
+  {
+    "path": "/blog/united-kingdom-two-city-holiday/",
+    "title": "Two cities, your own rhythm in the United Kingdom | Travora Journal",
+    "section": "blog"
+  },
+  {
+    "path": "/blog/malaysia-city-and-island-balance/",
+    "title": "Find your city-and-island balance in Malaysia | Travora Journal",
+    "section": "blog"
+  },
+  {
+    "path": "/blog/thailand-holiday-at-your-pace/",
+    "title": "Build a Thailand holiday around your pace | Travora Journal",
+    "section": "blog"
+  },
+  {
+    "path": "/blog/vietnam-fewer-stops-more-discovery/",
+    "title": "Vietnam: fewer stops, more discovery | Travora Journal",
+    "section": "blog"
+  },
+  {
+    "path": "/blog/united-states-of-america-choose-your-chapter/",
+    "title": "United States of America: choose your chapter | Travora Journal",
+    "section": "blog"
+  },
+  {
+    "path": "/blog/united-arab-emirates-two-city-balance/",
+    "title": "Find your balance in the United Arab Emirates | Travora Journal",
+    "section": "blog"
+  },
+  {
+    "path": "/plan-trip/",
+    "title": "Enquire About Your International Holiday",
+    "section": "plan"
+  },
+  {
+    "path": "/plan-trip/confirmation/",
+    "title": "Your Enquiry Reference",
+    "section": "plan"
+  },
+  {
+    "path": "/saved/",
+    "title": "Your saved trips",
+    "section": "saved"
+  },
+  {
+    "path": "/help/",
+    "title": "International Travel Planning Help",
+    "section": "help"
+  },
+  {
+    "path": "/photo-credits/",
+    "title": "Photography credits",
+    "section": "help"
+  },
+  {
+    "path": "/about/",
+    "title": "About Travora",
+    "section": "about"
+  },
+  {
+    "path": "/studio/",
+    "title": "Content Studio",
+    "section": "studio"
+  }
+]
