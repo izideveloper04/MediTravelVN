@@ -111,3 +111,22 @@ if (typeArg === 'lists') {
     }
   }
 }
+
+// Live check: fetch pages from a running server and compare their <main> with the original.
+// Usage: node scripts/fidelity.mjs live http://localhost:3112 [path-substring]
+if (typeArg === 'live') {
+  const base = slugArg.replace(/\/$/, '');
+  const only = process.argv[5] || '';
+  let n = 0, off = 0;
+  for (const [path, page] of Object.entries(pages)) {
+    if (only && !path.includes(only)) continue;
+    const res = await fetch(base + path);
+    const html = await res.text();
+    const main = (html.match(/<main id="main">([\s\S]*?)<\/main>/) || [])[1];
+    n++;
+    if (res.status !== 200 || main === undefined) { off++; console.log(`### ${path}: status ${res.status}`); continue; }
+    const diffs = myers(tokens(page.main), tokens(main)).filter((o) => o[0] !== '=');
+    if (diffs.length) { off++; console.log(`### ${path}: ${diffs.length} token diffs`, diffs.slice(0, 3).map((d) => d[0] + ' ' + d[1].slice(0, 100))); }
+  }
+  console.log(`${n - off}/${n} live pages match`);
+}
