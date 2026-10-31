@@ -37,7 +37,7 @@ Build the site with `WP_API_URL` set and WordPress reachable, so the pages built
 - `content/pages.json`, `content/chrome.json`: static page bodies, shared header and footer
 - `lib/content.js`: resolves an address to a page (redirect, WordPress item, listing page, static page)
 - `lib/source.js`, `lib/seed-api.js`: the content API (WordPress or sample data)
-- `app/[[...slug]]/page.js`: renders every route; `app/api/revalidate/route.js`: refresh webhook
+- `app/[[...slug]]/route.js`: serves every address as plain HTML (`lib/html.js` builds the document, no React runtime is sent); `app/api/revalidate/route.js`: refresh webhook
 
 ## Checking markup against the original
 `npm run fidelity` renders every item from data and compares it with the original page markup (`node scripts/fidelity.mjs destination london` for one page, `node scripts/fidelity.mjs lists` for listings, `node scripts/fidelity.mjs live http://localhost:3000` to check running pages).
