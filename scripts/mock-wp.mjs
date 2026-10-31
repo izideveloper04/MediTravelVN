@@ -29,7 +29,7 @@ http.createServer((req, res) => {
     locations: () => api.locations(),
     redirects: () => api.redirects(),
     item: () => ({ item: api.item(q.path) }),
-    list: () => api.list({ type: q.type, location: q.location, slugs: q.slugs, exclude: q.exclude, featured: q.featured, page: q.page, perPage: q.per_page }),
+    list: () => api.list({ type: q.type, location: q.location, slugs: q.slugs, exclude: q.exclude, category: q.category, featured: q.featured, page: q.page, perPage: q.per_page }),
     index: () => api.index({ page: q.page, perPage: q.per_page }),
   }[m[1]];
   if (!out) return res.writeHead(404).end();
