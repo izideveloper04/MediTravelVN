@@ -22,7 +22,8 @@ export async function generateMetadata({ params }) {
     description: page.description,
     alternates: { canonical: seo.canonical || path },
     robots: seo.noindex ? { index: false, follow: true } : undefined,
-    openGraph: seo.og_image ? { title: page.title, description: page.description, images: [seo.og_image] } : undefined,
+    openGraph: { type: path.startsWith('/blog/') && path !== '/blog/' ? 'article' : 'website', siteName: 'Travora', title: page.title, description: page.description, url: seo.canonical || path, images: seo.og_image || page.image ? [seo.og_image || page.image] : undefined },
+    twitter: { card: 'summary_large_image', title: page.title, description: page.description },
   };
 }
 
@@ -43,6 +44,7 @@ export default async function Page({ params }) {
     <>
       <div style={{ display: 'contents' }} dangerouslySetInnerHTML={{ __html: skip + markActive(header, page.service) }} />
       <main id="main" dangerouslySetInnerHTML={{ __html: page.main }} />
+      {page.jsonld && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(page.jsonld).replace(/</g, String.fromCharCode(92) + 'u003c') }} />}
       <div style={{ display: 'contents' }} dangerouslySetInnerHTML={{ __html: footer + `<script id="currency-config" type="application/json">${currencyConfig}</script>` }} />
     </>
   );
