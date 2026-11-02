@@ -1,0 +1,66 @@
+{
+ "cabins": {
+  "economy": {
+   "label": "Economy",
+   "factor": 1
+  },
+  "premium-economy": {
+   "label": "Premium Economy",
+   "factor": 1.55
+  },
+  "business": {
+   "label": "Business",
+   "factor": 2.8
+  },
+  "first": {
+   "label": "First",
+   "factor": 4.5
+  }
+ },
+ "options": [
+  {
+   "id": "direct-day",
+   "name": "Daytime direct",
+   "badge": "A simpler journey",
+   "depart": "10:20",
+   "returnDepart": "13:10",
+   "stops": 0,
+   "extraMinutes": 0,
+   "factor": 1.12,
+   "color": "blue"
+  },
+  {
+   "id": "connection-value",
+   "name": "Connection saver",
+   "badge": "Lowest example fare",
+   "depart": "07:15",
+   "returnDepart": "08:40",
+   "stops": 1,
+   "extraMinutes": 150,
+   "factor": 1,
+   "color": "orange"
+  },
+  {
+   "id": "direct-evening",
+   "name": "Evening direct",
+   "badge": "Make the most of the day",
+   "depart": "20:30",
+   "returnDepart": "19:20",
+   "stops": 0,
+   "extraMinutes": 10,
+   "factor": 1.22,
+   "color": "teal"
+  },
+  {
+   "id": "connection-flex",
+   "name": "Afternoon connection",
+   "badge": "An unhurried start",
+   "depart": "15:45",
+   "returnDepart": "16:30",
+   "stops": 1,
+   "extraMinutes": 210,
+   "factor": 1.08,
+   "color": "violet"
+  }
+ ]
+}

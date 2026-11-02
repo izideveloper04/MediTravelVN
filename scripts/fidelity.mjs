@@ -7,7 +7,7 @@ import { ICONS } from '../lib/render/icons.js';
 const INV = Object.fromEntries(Object.entries(ICONS).map(([k, v]) => [v, k]));
 
 const seed = JSON.parse(fs.readFileSync(new URL('../content/seed.json', import.meta.url)));
-const pages = JSON.parse(fs.readFileSync(new URL('../content/pages.json', import.meta.url)));
+const pages = { ...JSON.parse(fs.readFileSync(new URL('../content/pages.json', import.meta.url))), ...JSON.parse(fs.readFileSync(new URL('./reference/flights.json', import.meta.url))), ...JSON.parse(fs.readFileSync(new URL('./reference/pages.json', import.meta.url))) };
 const site = buildSite(seed);
 
 const IGNORE_VALUE = new Set(['data-name', 'data-dv5-search', 'data-blog-searchtext', 'min', 'value']);

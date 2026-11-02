@@ -1,6 +1,6 @@
-# Travora front end
+# meditravelvn front end
 
-Next.js 15 app that reproduces the original Travora design page for page. Styling, fonts, images and behaviours come from the original prototype. Content comes from WordPress, or from bundled sample data when WordPress is not connected.
+Next.js 15 app that reproduces the original meditravelvn design page for page. Styling, fonts, images and behaviours come from the original prototype. Content comes from WordPress, or from bundled sample data when WordPress is not connected.
 
 ## Run
     npm install
@@ -14,7 +14,8 @@ Without configuration the site runs on `content/seed.json`. To use WordPress, co
 - Each page loads only what it shows (see `lib/content.js`): the item, a few related items, or one page of a listing. Nothing loads the whole catalogue, so thousands of pages cost the same as a few.
 - `lib/render/*.js` turn each item into the original page markup. Listing pages (`/destinations/`, `/tours/`, `/hotels/`, `/transportation/results/`, `/blog/`, the home page country cards and every place or country picker) keep their authored markup, and `lib/render/listings.js` regenerates the card grids, counts and option lists from the data.
 - Long listings are paged by address: `/tours/page/2/`, `/hotels/results/page/2/`, `/blog/page/2/` (48, 48 and 24 per page). Every page is a real, crawlable address with Previous/Next links. Filters in the browser work within the page that is loaded.
-- Everything else (home page copy, flights, plan-a-trip, saved, help, about) is served from `content/pages.json`. A WordPress page at the same address replaces it.
+- Flight routes (`/flights/<route>/`) are content too (type `flight`): the airports, estimated fare, tagline and ideas come from WordPress, and the search form, results and enquiry flow read the same routes. Cabin classes and journey options are shared and live in `content/flight-config.json`.
+- About, help and photo credits are WordPress pages. Only the home page and the interactive pages (flight search, plan a trip, saved trips, studio) are served from `content/pages.json`; a WordPress page at the same address replaces them.
 - Pages are built on the first visit and then cached. A published item appears at its address immediately. Addresses are flat: `/destinations/<slug>/` for countries and cities, `/tours/<slug>/`, `/hotels/<slug>/`, `/transportation/<slug>/`, `/blog/<slug>/`. Unknown addresses return 404. Old addresses sent by WordPress answer with a permanent redirect.
 - `/sitemap.xml` lists chunks under `/sitemaps/<n>.xml` (1000 addresses each); `/robots.txt` points to it.
 
