@@ -76,7 +76,7 @@
    ],
    "fields": {
     "days": 5,
-    "price_inr": 120000,
+    "price_usd": 1440,
     "styles": "city",
     "badge": "New",
     "route_line": "Tokyo"
