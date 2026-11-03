@@ -752,3 +752,10 @@ h1,h2,h3,h4,p,a,button,label,summary{overflow-wrap:break-word}
   .original-booking-tabs{padding:12px;gap:6px}
   .original-booking-tabs button{padding:10px;font-size:11px}
 }
+.prose p{font-size:14px;line-height:1.9;color:var(--muted);margin:0 0 14px}
+.prose h2{font-size:22px;letter-spacing:-.6px;margin:0 0 14px}
+.prose h3{font-size:16px;margin:18px 0 6px}
+.prose a{color:var(--primary);font-weight:600}
+.prose ul,.prose ol{padding-left:20px;margin:0 0 14px;font-size:14px;line-height:1.9;color:var(--muted)}
+.v3-about-hero .prose{margin-top:23px}
+.v3-about-hero .prose p{margin-top:0}
