@@ -14,8 +14,8 @@ Without configuration the site runs on `content/seed.json`. To use WordPress, co
 - Each page loads only what it shows (see `lib/content.js`): the item, a few related items, or one page of a listing. Nothing loads the whole catalogue, so thousands of pages cost the same as a few.
 - `lib/render/*.js` turn each item into the original page markup. Listing pages (`/destinations/`, `/tours/`, `/hotels/`, `/transportation/results/`, `/blog/`, the home page country cards and every place or country picker) keep their authored markup, and `lib/render/listings.js` regenerates the card grids, counts and option lists from the data.
 - Long listings are paged by address: `/tours/page/2/`, `/hotels/results/page/2/`, `/blog/page/2/` (48, 48 and 24 per page). Every page is a real, crawlable address with Previous/Next links. Filters in the browser work within the page that is loaded.
-- Flight routes (`/flights/<route>/`) are content too (type `flight`): the airports, estimated fare, tagline and ideas come from WordPress, and the search form, results and enquiry flow read the same routes. Cabin classes and journey options are shared and live in `content/flight-config.json`.
-- About, help and photo credits are WordPress pages. Only the home page and the interactive pages (flight search, plan a trip, saved trips, studio) are served from `content/pages.json`; a WordPress page at the same address replaces them.
+- Flight routes (`/flights/<route>/`) are content too (type `flight`): the airports, estimated USD fare, tagline and ideas come from WordPress, and the search form, results and enquiry flow read the same routes. Cabin classes and journey options are shared and live in `content/flight-config.json`.
+- Designed pages live in this app (`content/pages.json`): the home page, About and Help (`SITE_PAGES` in `lib/content.js`, never asked of WordPress), and the interactive pages (flight search, plan a trip, saved trips). Listing pages keep their authored markup and get their cards from WordPress. Any other WordPress page is served at its own address: its featured image and opening paragraphs make the top, and each heading opens a card. The photo credits page is not in the app; create a WordPress page with the slug `photo-credits` to publish it. The home page shows six country cards in a 3 by 2 grid, each with a one-line text from the country's "Home page card line".
 - Pages are built on the first visit and then cached. A published item appears at its address immediately. Addresses are flat: `/destinations/<slug>/` for countries and cities, `/tours/<slug>/`, `/hotels/<slug>/`, `/transportation/<slug>/`, `/blog/<slug>/`. Unknown addresses return 404. Old addresses sent by WordPress answer with a permanent redirect.
 - `/sitemap.xml` lists chunks under `/sitemaps/<n>.xml` (1000 addresses each); `/robots.txt` points to it.
 
@@ -46,4 +46,13 @@ Build the site with `WP_API_URL` set and WordPress reachable, so the pages built
 
 ## Notes
 - Internal links are full page loads because `portal.js` initialises on load.
-- Prices are stored in INR and converted in the browser. Fares, availability and prices are illustrative. Saved trips live in the browser only.
+- All prices are USD only; there is no currency switch. Fares, availability and prices are illustrative. Saved trips live in the browser only.
+
+## Security
+- No secrets are in the repository. `.env`, `.env.local` and logs are git-ignored; `.env.example` holds names only. Set `WP_API_URL`, `WP_API_TOKEN`, `REVALIDATE_SECRET` and `SITE_URL` in the host's environment settings (Hostinger).
+- `/api/revalidate/` needs the secret in the `x-revalidate-secret` header (compared in constant time; a query-string secret is not accepted, so it never lands in logs). Tags and paths are validated and capped.
+- Redirects from WordPress are followed only when the target is a path on this site, never a full or protocol-relative address.
+- Data embedded in script tags (JSON-LD, the flight catalogue) escapes `<`, so content cannot close the tag. Titles and card text are HTML-escaped.
+- Responses carry `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy` and `Permissions-Policy`; the `X-Powered-By` header is off. `/api/` is disallowed in `robots.txt`.
+- The WordPress feed holds published public content only. Set a feed token in the plugin and `WP_API_TOKEN` here to make it private. Keep the WordPress admin behind a strong password and two-factor sign-in.
+- Not yet in place: a Content-Security-Policy (the original scripts use inline code), rate limiting (do this at the CDN once the real domain is connected), and the CDN cache rules.

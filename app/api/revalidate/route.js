@@ -2,7 +2,7 @@ import { revalidatePath, revalidateTag } from 'next/cache';
 import { timingSafeEqual } from 'node:crypto';
 
 // WordPress calls this after a publish, update, unpublish or slug change.
-// Header: x-revalidate-secret (or ?secret=).
+// Header: x-revalidate-secret (never the address, which ends up in logs).
 // Body: { tags?: string[], paths?: string[], all?: boolean }. Tags name the data that changed (item:<path>,
 // list:<type>:<country|all>, locations, redirects, index); paths are pages to rebuild.
 // Only the named data and pages are refreshed, so the rest of the site stays cached.
@@ -20,7 +20,7 @@ const strings = (v) => (Array.isArray(v) ? v.filter((s) => typeof s === 'string'
 export async function POST(request) {
   const expected = process.env.REVALIDATE_SECRET;
   if (!expected) return Response.json({ ok: false, error: 'REVALIDATE_SECRET is not set' }, { status: 503 });
-  const given = request.headers.get('x-revalidate-secret') ?? new URL(request.url).searchParams.get('secret');
+  const given = request.headers.get('x-revalidate-secret');
   if (!same(given, expected)) return Response.json({ ok: false }, { status: 401 });
 
   const body = await request.json().catch(() => ({}));
