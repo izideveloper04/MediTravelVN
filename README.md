@@ -48,6 +48,9 @@ Build the site with `WP_API_URL` set and WordPress reachable, so the pages built
 - Internal links are full page loads because `portal.js` initialises on load.
 - All prices are USD only; there is no currency switch. Fares, availability and prices are illustrative. Saved trips live in the browser only.
 
+## Phone number
+The phone number shown in the header, footer and flight pages is one setting: edit \phone\ in \content/site.json\, or set \SITE_PHONE\ on the host (no code change; \.env.example\ lists it). Pages use \{{phone}}\, \{{phone_href}}\ and \{{phone_link}}\ where it should appear. A real number becomes a click-to-call link; the placeholder \+1-xxx-xxxx-xxx\ shows as text and the phone icon opens the quote form instead. Pages pick up a change on their next refresh (within an hour, or on a new deploy).
+
 ## Security
 - No secrets are in the repository. `.env`, `.env.local` and logs are git-ignored; `.env.example` holds names only. Set `WP_API_URL`, `WP_API_TOKEN`, `REVALIDATE_SECRET` and `SITE_URL` in the host's environment settings (Hostinger).
 - `/api/revalidate/` needs the secret in the `x-revalidate-secret` header (compared in constant time; a query-string secret is not accepted, so it never lands in logs). Tags and paths are validated and capped.

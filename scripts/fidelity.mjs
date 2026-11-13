@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import { buildSite } from '../lib/site.js';
 import { renderers } from '../lib/render/index.js';
 import { ICONS } from '../lib/render/icons.js';
+import { applySite } from '../lib/site-config.js';
 const INV = Object.fromEntries(Object.entries(ICONS).map(([k, v]) => [v, k]));
 
 const seed = JSON.parse(fs.readFileSync(new URL('../content/seed.json', import.meta.url)));
@@ -125,7 +126,7 @@ if (typeArg === 'live') {
     const main = (html.match(/<main id="main">([\s\S]*?)<\/main>/) || [])[1];
     n++;
     if (res.status !== 200 || main === undefined) { off++; console.log(`### ${path}: status ${res.status}`); continue; }
-    const diffs = myers(tokens(page.main), tokens(main)).filter((o) => o[0] !== '=');
+    const diffs = myers(tokens(applySite(page.main)), tokens(main)).filter((o) => o[0] !== '=');
     if (diffs.length) { off++; console.log(`### ${path}: ${diffs.length} token diffs`, diffs.slice(0, 3).map((d) => d[0] + ' ' + d[1].slice(0, 100))); }
   }
   console.log(`${n - off}/${n} live pages match`);
