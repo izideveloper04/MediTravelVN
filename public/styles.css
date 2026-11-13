@@ -759,3 +759,9 @@ h1,h2,h3,h4,p,a,button,label,summary{overflow-wrap:break-word}
 .prose ul,.prose ol{padding-left:20px;margin:0 0 14px;font-size:14px;line-height:1.9;color:var(--muted)}
 .v3-about-hero .prose{margin-top:23px}
 .v3-about-hero .prose p{margin-top:0}
+
+.tf-results-intro{margin-top:10px;max-width:640px;font-size:14px;line-height:1.7;color:var(--muted)}
+.tf-expert-strip{margin:0 0 18px;padding:14px 18px;border-radius:14px;background:var(--soft);font-size:14px;line-height:1.6;color:var(--muted)}
+.tf-expert-strip strong{color:var(--text,inherit)}
+.tf-expert-strip a{font-weight:700;color:var(--primary);white-space:nowrap}
+.tf-connection-note{margin:0;padding:12px 24px 0;font-size:13px;line-height:1.7;color:var(--muted)}
