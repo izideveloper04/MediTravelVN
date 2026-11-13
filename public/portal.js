@@ -261,7 +261,13 @@ savedState();renderSaved();
   const cabinLabel=catalogue.cabins[cabin].label;
   const setText=(selector,value)=>$$(selector).forEach(el=>el.textContent=value);
   const duration=minutes=>Math.floor(minutes/60)+'h'+(minutes%60?' '+minutes%60+'m':'');
-  const options=route?catalogue.options.map(o=>({...o,minutes:route.sampleDurationMinutes+o.extraMinutes,price:Math.round(route.sampleFareFrom*o.factor*catalogue.cabins[cabin].factor*(tripType==='round'?1.85:1)/50)*50})):[];
+  // No direct route: estimate one-connection journeys from the routes that share an airport with both ends.
+  const legOf=(a,b)=>catalogue.routes.find(r=>(r.fromCode===a&&r.toCode===b)||(r.fromCode===b&&r.toCode===a));
+  const link=catalogue.connection;
+  const connections=!route&&origin&&destination&&link?[...airports.keys()].filter(h=>h!==fromCode&&h!==toCode).map(h=>{const a=legOf(fromCode,h),b=legOf(h,toCode);return a&&b?{hub:airports.get(h),minutes:a.sampleDurationMinutes+b.sampleDurationMinutes+link.layoverMinutes,fare:(a.sampleFareFrom+b.sampleFareFrom)*link.throughFactor}:null;}).filter(Boolean).sort((x,y)=>x.minutes-y.minutes).slice(0,3):[];
+  const options=route?catalogue.options.map(o=>({...o,minutes:route.sampleDurationMinutes+o.extraMinutes,price:Math.round(route.sampleFareFrom*o.factor*catalogue.cabins[cabin].factor*(tripType==='round'?1.85:1)/50)*50})):connections.map(c=>({id:'via-'+c.hub.code.toLowerCase(),name:'Via '+c.hub.city,hub:c.hub,stops:1,minutes:c.minutes,depart:'Confirmed in quote',returnDepart:'Confirmed in quote',price:Math.round(c.fare*catalogue.cabins[cabin].factor*(tripType==='round'?1.85:1)/50)*50}));
+  // Connection examples reuse the connection card's markup; the direct examples stay hidden because no option matches them.
+  if(!route&&options.length){const list=$('.tf-flight-list'),tpl=$('[data-flight-option="connection-value"]');if(list&&tpl)options.forEach(o=>{const c=tpl.cloneNode(true);c.dataset.flightOption=o.id;c.hidden=false;$('h3',c).textContent=o.name+' ('+o.hub.code+')';$('.tf-option-badge',c).textContent='1 connection';$('.tf-flight-line small',c).textContent='1 connection via '+o.hub.city;$('.tf-timetable>div strong',c).textContent='—';$('.tf-timetable>div small',c).textContent='Departure in quote';list.append(c);});}
   const searchSummary=`${tripType==='round'?'Round Trip':'One Way'} · ${readable(depart)}${tripType==='round'?' – '+readable(returnDate):''} · ${travellers} ${travellers===1?'traveller':'travellers'} · ${cabinLabel}`;
   setText('[data-flight-origin]',origin?.city||'Choose your departure');
   setText('[data-flight-destination]',destination?.city||'Choose your destination');
@@ -294,7 +300,7 @@ savedState();renderSaved();
     $$('[data-flight-return-leg]').forEach(el=>el.hidden=tripType!=='round');
     if(selectedOption){
       setText('[data-flight-review-option]',selectedOption.name);setText('[data-flight-review-depart]',selectedOption.depart);setText('[data-flight-review-return-depart]',selectedOption.returnDepart);
-      setText('[data-flight-review-duration]',duration(selectedOption.minutes));setText('[data-flight-review-return-duration]',duration(selectedOption.minutes));setText('[data-flight-review-stop]',selectedOption.stops?'1 connection example':'Direct example');
+      setText('[data-flight-review-duration]',duration(selectedOption.minutes));setText('[data-flight-review-return-duration]',duration(selectedOption.minutes));setText('[data-flight-review-stop]',selectedOption.hub?'1 connection via '+selectedOption.hub.city+' (example)':selectedOption.stops?'1 connection example':'Direct example');
       $('[data-flight-review-price]').innerHTML=moneyHTML(selectedOption.price);$('[data-flight-review-total]').innerHTML=moneyHTML(selectedOption.price*travellers);
     }else{
       for(const selector of ['[data-flight-review-price]','[data-flight-review-total]','[data-flight-review-duration]','[data-flight-review-return-duration]','[data-flight-review-depart]','[data-flight-review-return-depart]','[data-flight-review-stop]'])setText(selector,'To be quoted');
@@ -324,7 +330,7 @@ savedState();renderSaved();
     let visible=0;
     cards.forEach(card=>{
       const o=options.find(x=>x.id===card.dataset.flightOption), hour=Number(o?.depart.slice(0,2)), time=hour>=6&&hour<12?'morning':hour>=12&&hour<18?'afternoon':'evening';
-      card.hidden=!o||(stops.length&&!stops.includes(String(o.stops)))||(times.length&&!times.includes(time))||o.price>limit;
+      card.hidden=!o||(stops.length&&!stops.includes(String(o.stops)))||(times.length&&/^\d\d/.test(o.depart)&&!times.includes(time))||o.price>limit;
       if(!card.hidden)visible++;
     });
     setText('[data-flight-count]',String(visible));$('[data-flight-empty]').hidden=visible>0;
