@@ -232,6 +232,35 @@ savedState();renderSaved();
     if(/^[1-9]$/.test(params.get('travellers')||''))form.elements.namedItem('travellers').value=params.get('travellers');
     if(supportedCabins.includes(params.get('cabin')))form.elements.namedItem('cabin').value=params.get('cabin');
     if(['round','oneway'].includes(params.get('tripType')))$$('[name="tripType"]',form).forEach(i=>i.checked=i.value===params.get('tripType'));
+    // Airport type-ahead over the same select, a swap button, a flexible-dates tick and a hint for pairs without an example.
+    const expert=(extra='')=>'/plan-trip/?service=flights'+extra;
+    const hint=document.createElement('p');hint.className='tf-search-hint';hint.setAttribute('role','status');hint.hidden=true;
+    $('[data-flight-search-error]',form)?.after(hint);
+    const typeahead=name=>{
+      const select=form.elements.namedItem(name);if(!select||select.dataset.enhanced)return;select.dataset.enhanced='1';
+      const list=[...select.options].filter(o=>o.value).map(o=>({code:o.value,label:o.textContent.trim()}));
+      const id='airports-'+name+'-'+Math.random().toString(36).slice(2,7);
+      const input=document.createElement('input');input.type='text';input.setAttribute('list',id);input.autocomplete='off';input.placeholder='City or airport';input.required=true;input.setAttribute('aria-label',(name==='from'?'From':'To')+' airport');input.dataset.airportInput=name;
+      const options=document.createElement('datalist');options.id=id;list.forEach(a=>{const o=document.createElement('option');o.value=a.label;options.append(o);});
+      const show=()=>{const o=select.options[select.selectedIndex];input.value=o&&o.value?o.textContent.trim():'';input.dataset.unknown='';};
+      const pick=()=>{
+        const q=input.value.trim().toLowerCase();if(!q){select.value='';input.dataset.unknown='';input.setCustomValidity('');return;}
+        const near=list.filter(a=>a.label.toLowerCase().includes(q));
+        const hit=list.find(a=>a.label.toLowerCase()===q)||list.find(a=>a.code.toLowerCase()===q)||(near.length===1?near[0]:null);
+        if(hit){select.value=hit.code;input.value=hit.label;input.dataset.unknown='';}else{select.value='';input.dataset.unknown='1';}
+        input.setCustomValidity(input.dataset.unknown?'Choose an airport from the list, or ask our expert below.':'');
+      };
+      select.style.display='none';select.required=false;select.before(input,options);show();
+      input.addEventListener('change',pick);
+      select.addEventListener('change',show);
+    };
+    typeahead('from');typeahead('to');
+    const fromLabel=form.elements.namedItem('from')?.closest('label');
+    if(fromLabel){const swap=document.createElement('button');swap.type='button';swap.className='tf-swap';swap.textContent='⇄ Swap';swap.setAttribute('aria-label','Swap From and To airports');
+      swap.addEventListener('click',()=>{const a=form.elements.namedItem('from'),b=form.elements.namedItem('to');const t=a.value;a.value=b.value;b.value=t;a.dispatchEvent(new Event('change',{bubbles:true}));b.dispatchEvent(new Event('change',{bubbles:true}));});
+      fromLabel.append(swap);}
+    const top=$('.tf-search-top',form);
+    if(top&&!form.elements.namedItem('flex')){const flex=document.createElement('label');flex.className='tf-flex';flex.innerHTML='<input type="checkbox" name="flex" value="1"> My dates are flexible';top.querySelector('span')?.before(flex);flex.firstChild.checked=params.get('flex')==='1';}
     const update=()=>{
       const trip=form.elements.namedItem('tripType').value, round=trip==='round';
       form.dataset.trip=trip;end.closest('[data-flight-return]').hidden=!round;end.disabled=!round;end.required=round;end.min=departure.value||localDate(0);
@@ -239,6 +268,18 @@ savedState();renderSaved();
       const same=form.elements.namedItem('from').value===form.elements.namedItem('to').value&&!!form.elements.namedItem('from').value;
       form.elements.namedItem('to').setCustomValidity(same?'Choose a destination airport different from your departure airport.':'');
       const message=$('[data-flight-search-error]',form);message.hidden=!same;message.textContent=same?'Your departure and destination airports must be different.':'';
+      const unknown=$$('[data-airport-input]',form).some(i=>i.dataset.unknown==='1'&&i.value.trim());
+      const a=form.elements.namedItem('from').value,b=form.elements.namedItem('to').value;
+      const direct=catalogue?.routes.some(r=>(r.fromCode===a&&r.toCode===b)||(r.fromCode===b&&r.toCode===a));
+      const missing=!same&&a&&b&&catalogue&&!direct;
+      hint.hidden=!(unknown||missing);
+      if(unknown)hint.innerHTML='We could not find that airport in our examples. <a href="'+expert()+'">Ask our expert</a> and we will quote it for you.';
+      else if(missing){
+        const leg=(x,y)=>catalogue.routes.some(r=>(r.fromCode===x&&r.toCode===y)||(r.fromCode===y&&r.toCode===x));
+        const via=[...new Set(catalogue.routes.flatMap(r=>[r.fromCode,r.toCode]))].some(h=>h!==a&&h!==b&&leg(a,h)&&leg(h,b));
+        const link='<a href="'+expert('&from='+a+'&to='+b)+'">our expert</a>';
+        hint.innerHTML=via?'There is no direct example for this pair, so we will show connection ideas. '+link.replace('our expert','Our expert')+' can also check direct flights.':'We have no ready example for this pair, but '+link+' can quote any route.';
+      }
     };
     form.addEventListener('change',update);form.addEventListener('submit',event=>{update();if(!form.reportValidity())event.preventDefault();});update();
   });
@@ -256,6 +297,7 @@ savedState();renderSaved();
   const reversed=!exactRoute&&catalogue.routes.find(r=>r.fromCode===toCode&&r.toCode===fromCode);
   const route=exactRoute||reversed;
   const tripType=params.get('tripType')==='oneway'?'oneway':'round';
+  const flexible=params.get('flex')==='1';
   const travellers=/^[1-9]$/.test(params.get('travellers')||'')?Number(params.get('travellers')):2;
   const cabin=supportedCabins.includes(params.get('cabin'))?params.get('cabin'):'economy';
   const cabinLabel=catalogue.cabins[cabin].label;
@@ -268,7 +310,7 @@ savedState();renderSaved();
   const options=route?catalogue.options.map(o=>({...o,minutes:route.sampleDurationMinutes+o.extraMinutes,price:Math.round(route.sampleFareFrom*o.factor*catalogue.cabins[cabin].factor*(tripType==='round'?1.85:1)/50)*50})):connections.map(c=>({id:'via-'+c.hub.code.toLowerCase(),name:'Via '+c.hub.city,hub:c.hub,stops:1,minutes:c.minutes,depart:'Confirmed in quote',returnDepart:'Confirmed in quote',price:Math.round(c.fare*catalogue.cabins[cabin].factor*(tripType==='round'?1.85:1)/50)*50}));
   // Connection examples reuse the connection card's markup; the direct examples stay hidden because no option matches them.
   if(!route&&options.length){const list=$('.tf-flight-list'),tpl=$('[data-flight-option="connection-value"]');if(list&&tpl)options.forEach(o=>{const c=tpl.cloneNode(true);c.dataset.flightOption=o.id;c.hidden=false;$('h3',c).textContent=o.name+' ('+o.hub.code+')';$('.tf-option-badge',c).textContent='1 connection';$('.tf-flight-line small',c).textContent='1 connection via '+o.hub.city;$('.tf-timetable>div strong',c).textContent='TBC';$('.tf-timetable>div small',c).textContent='Time confirmed in quote';const note=document.createElement('p');note.className='tf-connection-note';note.textContent=origin.city+' to '+o.hub.city+', then '+o.hub.city+' to '+destination.city+' · about '+duration(link.layoverMinutes)+' wait in '+o.hub.city+'. Direct flights may also exist, so ask our expert.';$('.tf-flight-card-bottom',c).before(note);list.append(c);});}
-  const searchSummary=`${tripType==='round'?'Round Trip':'One Way'} · ${readable(depart)}${tripType==='round'?' – '+readable(returnDate):''} · ${travellers} ${travellers===1?'traveller':'travellers'} · ${cabinLabel}`;
+  const searchSummary=`${tripType==='round'?'Round Trip':'One Way'} · ${readable(depart)}${tripType==='round'?' – '+readable(returnDate):''} · ${travellers} ${travellers===1?'traveller':'travellers'} · ${cabinLabel}${flexible?' · Flexible dates':''}`;
   setText('[data-flight-origin]',origin?.city||'Choose your departure');
   setText('[data-flight-destination]',destination?.city||'Choose your destination');
   setText('[data-flight-origin-code]',origin?.code||'—');
@@ -280,6 +322,7 @@ savedState();renderSaved();
   const baseQuery=()=>{
     const p=new URLSearchParams({from:fromCode,to:toCode,depart,travellers:String(travellers),cabin,tripType});
     if(tripType==='round')p.set('return',returnDate);
+    if(flexible)p.set('flex','1');
     if(exactRoute)p.set('route',exactRoute.id);
     return p;
   };

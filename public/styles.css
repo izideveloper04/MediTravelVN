@@ -765,3 +765,10 @@ h1,h2,h3,h4,p,a,button,label,summary{overflow-wrap:break-word}
 .tf-expert-strip strong{color:var(--text,inherit)}
 .tf-expert-strip a{font-weight:700;color:var(--primary);white-space:nowrap}
 .tf-connection-note{margin:0;padding:12px 24px 0;font-size:13px;line-height:1.7;color:var(--muted)}
+
+.tf-search-fields>label{position:relative}
+.tf-swap{position:absolute;top:8px;right:10px;border:0;background:none;padding:2px 4px;color:var(--primary);font-size:11px;font-weight:700;cursor:pointer}
+.tf-flex{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--text-muted);cursor:pointer}
+.tf-search-hint{margin-top:12px;padding:10px 14px;border-radius:10px;background:var(--soft);font-size:13px;line-height:1.6;color:var(--muted)}
+.tf-search-hint a{font-weight:700;color:var(--primary)}
+.tf-search-fields input[data-airport-input]{width:100%;min-width:0;border:0;background:transparent;font:inherit;color:inherit;padding:0;outline:0}
